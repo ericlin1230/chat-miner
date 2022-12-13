@@ -225,6 +225,31 @@ class FacebookMessengerParser(Parser):
         }
         return parsed_message
 
+class DiscordParser(Parser):
+    def _read_file_into_list(self):
+        self._logger.info("Starting reading raw messages into memory...")
+        self.messages = []
+
+        with self._file.open(encoding="utf-8", errors="ignore") as f:
+            messages_raw = reversed((json.load(f)["messages"]))
+
+        for line in messages_raw:
+            self.messages.append(line)
+        self._logger.info(
+            "Finished reading %i raw messages into memory.", len(self.messages)
+        )
+
+    def _parse_message(self, mess):
+        m = "img"
+        if mess["content"]:
+            m = mess["content"]
+        parsed_message = {
+            "datetime": datetime.datetime.strptime(mess['timestamp'][:19],'%Y-%m-%dT%H:%M:%S'),
+            "author": mess["author"]["name"],
+            "message": m,
+        }
+        return parsed_message
+
 
 class TelegramJsonParser(Parser):
     def __init__(self, filepath, chat_name=None):
