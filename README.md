@@ -1,5 +1,7 @@
 # Added Discord support from the original
 
+Use [DiscordChatExporter](https://github.com/Tyrrrz/DiscordChatExporter) to export .json file
+
 # chat-miner: turn your chats into artwork
 
 [![PyPI Version](https://img.shields.io/pypi/v/chat-miner.svg)](https://pypi.org/project/chat-miner/)
