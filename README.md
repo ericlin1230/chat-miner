@@ -1,3 +1,5 @@
+# Added Discord support from the original
+
 # chat-miner: turn your chats into artwork
 
 [![PyPI Version](https://img.shields.io/pypi/v/chat-miner.svg)](https://pypi.org/project/chat-miner/)
